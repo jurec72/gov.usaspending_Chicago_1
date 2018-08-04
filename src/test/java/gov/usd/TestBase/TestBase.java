@@ -2,6 +2,8 @@
 package gov.usd.TestBase;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -33,7 +35,7 @@ public abstract class TestBase {
 	
 
 	
-	@BeforeTest
+	@BeforeTest(alwaysRun=true)
 	public void setUpTest() {
 
 		report = new ExtentReports();
@@ -97,7 +99,7 @@ public abstract class TestBase {
 
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun=true)
 	public void tearDownTest() {
 
 		report.flush();
