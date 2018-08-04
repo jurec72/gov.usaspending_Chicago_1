@@ -40,6 +40,9 @@ public class HomePage {
 
 	@FindBy(xpath = "//ul[@class='full-menu__list']")
 	public WebElement mainMenu;
+	
+	@FindBy(xpath = "//*[@id=\"app\"]/div/div/div[1]/header/nav/div/div[4]/ul/li[3]/div/div/ul/li[1]/a")
+	public WebElement agencies;
 
 	/*
 	 * method open home page, and verify title
