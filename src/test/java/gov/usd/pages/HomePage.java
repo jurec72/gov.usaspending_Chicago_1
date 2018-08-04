@@ -54,6 +54,10 @@ public class HomePage {
 	public WebElement clickXBtn;
 	
 
+
+	@FindBy(linkText="Agencies")
+	public WebElement profilesAgenciesOption;
+	
 	/*
 	 * method open home page, and verify title
 	 */
