@@ -44,6 +44,11 @@ public class AgenciesPage {
 
 	@FindBy(xpath = "//div[@class='agency-link-cell column-agency_name']/div")
 	public List<WebElement> agenciesAgencyNameList;
+	
+	@FindBy(xpath = "//h2[@class='landing-page__title']")
+	public WebElement agenciesTitle;
+
+	
 /*
  * this method converted String to Double
  */
