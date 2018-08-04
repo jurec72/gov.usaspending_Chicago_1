@@ -41,6 +41,10 @@ public class HomePage {
 	@FindBy(xpath = "//ul[@class='full-menu__list']")
 	public WebElement mainMenu;
 
+
+	@FindBy(linkText="Agencies")
+	public WebElement profilesAgenciesOption;
+	
 	/*
 	 * method open home page, and verify title
 	 */
