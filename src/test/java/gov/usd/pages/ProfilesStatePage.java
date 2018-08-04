@@ -50,6 +50,8 @@ public class ProfilesStatePage {
 	@FindBy(xpath="//*[@id='main-content']/div/div[2]/div[2]")
 	public WebElement LeftCornerResult;
 	
+	@FindBy(xpath="//h2[@class='landing-page__title']")
+	public WebElement stateTitle;
 	
 	
 

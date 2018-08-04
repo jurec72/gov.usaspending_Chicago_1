@@ -57,9 +57,12 @@ public class HomePage {
 	@FindBy(xpath = "//button[@class='info-banner__close-button']")
 	public WebElement clickXBtn;
 
-
 	@FindBy(linkText="Agencies")
 	public WebElement profilesAgenciesOption;
+	
+	@FindBy(linkText="Federal Accounts")
+	public WebElement profilesFederelAccountsOption;
+	
 	
 	/*
 	 * method open home page, and verify title
