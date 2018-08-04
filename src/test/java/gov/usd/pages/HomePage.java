@@ -40,6 +40,19 @@ public class HomePage {
 
 	@FindBy(xpath = "//ul[@class='full-menu__list']")
 	public WebElement mainMenu;
+	
+	@FindBy(xpath = "//div[@class='info-banner__alert-text']")
+	public WebElement textOfTheMessage;
+	
+	@FindBy(xpath = "//div[@class='info-banner__title-text']/../a[1]")
+	public WebElement clickAbout;
+	
+	@FindBy(xpath = "//div[@class='info-banner__title-text']/../a[2]")
+	public WebElement clickCommunity;
+	
+	@FindBy(xpath = "//button[@class='info-banner__close-button']")
+	public WebElement clickXBtn;
+	
 
 	/*
 	 * method open home page, and verify title
