@@ -23,7 +23,7 @@ public class SPA_573_TC extends TestBase {
 	@Test(priority = 1, description = "Home page Title verification")
 	public void verifyHomePageTitle() {
 
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 	}
 
@@ -32,7 +32,7 @@ public class SPA_573_TC extends TestBase {
 	public void stateUrl() {
 
 
-		hp.goToProfileToStateVerifyUrl();
+		Assert.assertTrue(hp.goToProfileToStateVerifyUrl());
 
 	}
 
@@ -44,9 +44,9 @@ public class SPA_573_TC extends TestBase {
 
 		List<String> expectedStatesAssending = new ArrayList<>();
 
-		psp.states.stream().limit(9).forEach(x -> actualStatesAssending.add(x.getText()));
+		psp.states.stream().limit(5).forEach(x -> actualStatesAssending.add(x.getText()));
 
-		psp.states.stream().limit(9).forEach(x -> expectedStatesAssending.add(x.getText()));
+		psp.states.stream().limit(5).forEach(x -> expectedStatesAssending.add(x.getText()));
 
 		Collections.sort(expectedStatesAssending);
 
@@ -58,6 +58,8 @@ public class SPA_573_TC extends TestBase {
 	@Test(priority = 4, description = "Check descending order of states")
 
 	public void descending() {
+		
+		BrowserUtils.waitFor(2);
 
 		psp.clickToGetDecendingStatesOrder.click();
 		
@@ -65,9 +67,9 @@ public class SPA_573_TC extends TestBase {
 
 		List<String> expectedStatesAssending = new ArrayList<>();
 
-		psp.states.stream().limit(9).forEach(x -> actualStatesAssending.add(x.getText().trim()));
+		psp.states.stream().limit(5).forEach(x -> actualStatesAssending.add(x.getText().trim()));
 
-		psp.states.stream().limit(9).forEach(x -> expectedStatesAssending.add(x.getText().trim()));
+		psp.states.stream().limit(5).forEach(x -> expectedStatesAssending.add(x.getText().trim()));
 
 		Collections.reverse(expectedStatesAssending);
 

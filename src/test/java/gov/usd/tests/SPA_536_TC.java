@@ -25,7 +25,7 @@ public class SPA_536_TC extends TestBase{
 	@Test(priority = 1, description = "Title verification")
 	public void verificationTitle() {
 
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 		
 	}
 

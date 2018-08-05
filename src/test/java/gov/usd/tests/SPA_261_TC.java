@@ -1,7 +1,10 @@
 package gov.usd.tests;
 
+
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import gov.usd.TestBase.TestBase;
 import gov.usd.pages.HomePage;
 
@@ -12,7 +15,8 @@ public class SPA_261_TC extends TestBase {
 	@Test(priority = 1, description = "Home page Title verification")
 	public void verifyHomePageTitle() {
 
-		hp.goHomePageAndVerifyTitle();
+		
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 	}
 

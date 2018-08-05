@@ -28,7 +28,7 @@ public class SPA_571_TC extends TestBase {
 	@Test(priority = 1, description = "Home page Title verification")
 	public void verifyHomePageTitle() {
 
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 	}
 	
@@ -36,7 +36,7 @@ public class SPA_571_TC extends TestBase {
 	@Test(priority = 2, description = "Hover over the PROFILE to reach Federal Accounts link")
 	public void openFederalAccounts() {
 
-		fap.goProfileGoFederalAccVerUrl();
+		Assert.assertTrue(fap.goProfileGoFederalAccVerUrl());
 
 	}
 

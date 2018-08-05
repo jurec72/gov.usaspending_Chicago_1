@@ -15,9 +15,9 @@ import gov.usd.utilities.ConfigurationReader;
 import gov.usd.utilities.Driver;
 
 public class FederalAccountsPage {
-	
-	Actions action=new Actions(Driver.getDriver());
-	HomePage hp=new HomePage();
+
+	Actions action = new Actions(Driver.getDriver());
+	HomePage hp = new HomePage();
 
 	private WebDriver driver;
 
@@ -54,17 +54,15 @@ public class FederalAccountsPage {
 
 	@FindBy(xpath = "//div[@class='header-icons']/button[2]")
 	public WebElement descendAccountNumBtn;
-	
+
 	@FindBy(xpath = "//div[contains(text(),'Account Name')]")
 	public WebElement managingAccountName;
-	
+
 	@FindBy(xpath = "//div[@class='results-table-cell results-table-cell_column_accountName']")
 	public List<WebElement> accountNameRow;
-	
+
 	@FindBy(xpath = "//h2[@class='landing-page__title']")
 	public WebElement federalAccountsTitle;
-	
-	
 
 	/*
 	 * method to convert String to Integer
@@ -95,14 +93,13 @@ public class FederalAccountsPage {
 		System.out.println("Size: " + prices.size());
 		return prices;
 	}
-	
+
 	/*
-	 * method hoverover to profile menu and click to Federal Accounts and verify
-	 * url
+	 * method hoverover to profile menu and click to Federal Accounts and verify url
 	 */
-	
-	public void goProfileGoFederalAccVerUrl() {
-		
+
+	public boolean goProfileGoFederalAccVerUrl() {
+
 		action.moveToElement(hp.profileMenu).build().perform();
 
 		hp.federalAccountsSubMenu.click();
@@ -111,7 +108,7 @@ public class FederalAccountsPage {
 
 		String expectedUrl = ConfigurationReader.getProperty("urlFederal");
 
-		assertEquals(actualUrl, expectedUrl, "Verify url of the Federal Accounts page");
+		return actualUrl.equals(expectedUrl);
 	}
 
 }

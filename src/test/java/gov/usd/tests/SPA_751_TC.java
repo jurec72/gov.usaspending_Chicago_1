@@ -1,5 +1,6 @@
 package gov.usd.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
@@ -12,25 +13,27 @@ public class SPA_751_TC extends TestBase {
 
 	HomePage hp = new HomePage();
 
-	@Ignore
 	@Test(priority = 1, description = "Launch the URL")
 	public void launchUrl() {
 		// launch url
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 		// hover over to spending Explorer Menu and click on it
 		BrowserUtils.hover(hp.spendingExplorerMenu);
 		BrowserUtils.waitFor(2);
 		hp.spendingExplorerMenu.click();
 	}
 
-	@Ignore
 	@Test(priority = 2, description = "Checking Award Search Menu and SubMenus in it")
 	public void awardSearch() {
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 		// hover over to Award Search Menu and click on Advanced Search SubMenu
 		BrowserUtils.hover(hp.awardSearchMenu);
+		
+		BrowserUtils.waitFor(1);
+		
 		hp.advancedSearchSubMenu.click();
-		BrowserUtils.waitFor(2);
+		
+		BrowserUtils.waitFor(1);
 
 		// hover over to Award Search Menu and click on Keyword Search SubMenu
 		BrowserUtils.hover(hp.awardSearchMenu);
@@ -38,10 +41,10 @@ public class SPA_751_TC extends TestBase {
 		BrowserUtils.waitFor(2);
 	}
 
-	@Ignore
+
 	@Test(priority = 3, description = "Checking Profile Menu and SubMenus in it")
 	public void profilesMenu() {
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 		// hover over to Profiles Menu and click on Agencies SubMenu
 		BrowserUtils.hover(hp.profileMenu);
@@ -61,7 +64,7 @@ public class SPA_751_TC extends TestBase {
 
 	@Test(priority = 4, description = "Checking Download Center Menu and SubMenus in it")
 	public void downloadCenterMenu() {
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 		// hover over to Download Center Menu and click on Award Data Archive SubMenu
 		BrowserUtils.hover(hp.downloadCenterMenu);
@@ -97,7 +100,7 @@ public class SPA_751_TC extends TestBase {
 
 	@Test(priority = 5, description = "Checking Glossary Menu")
 	public void glossaryMenu() {
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 		// hover over to Download Center Menu and click on API SubMenu
 		BrowserUtils.hover(hp.glossaryMenu);

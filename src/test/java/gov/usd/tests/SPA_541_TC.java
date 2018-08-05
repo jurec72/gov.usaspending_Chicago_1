@@ -30,7 +30,7 @@ public class SPA_541_TC extends TestBase {
 
 		action.moveToElement(hp.profileMenu).build().perform();
 
-		hp.agencies.click();
+		hp.agenciesSubMenu.click();
 
 		ap.searchInput.sendKeys(ConfigurationReader.getProperty("searchInputAgencies"));
 

@@ -20,8 +20,7 @@ public class SPA_576_TC extends TestBase {
 	@Test(priority = 1, description = "Home page Title verification")
 	public void verifyHomePageTitle() {
 
-		hp.goHomePageAndVerifyTitle();
-
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 	}
 
 	@Test(priority = 2, description = "Check Profile State option")
@@ -29,7 +28,8 @@ public class SPA_576_TC extends TestBase {
 	public void stateUrl() {
 		
 		BrowserUtils.waitFor(1);
-		hp.goToProfileToStateVerifyUrl();
+		
+		Assert.assertTrue(hp.goToProfileToStateVerifyUrl());
 
 	}
 

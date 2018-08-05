@@ -23,17 +23,13 @@ public class SPA_511_TC extends TestBase {
 	@Test(priority = 1, description = "Launching to the home page")
 	public void titleVerification() {
 
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 		
 	}
 
 	@Test(priority = 2, description = "Verifying the explorer page")
 	public void explorerTitleVerification() {
 
-		// Launch the url
-		driver.get(ConfigurationReader.getProperty("urlExplorer"));
-
-		// Verifing the title
 		String actualTitle = ConfigurationReader.getProperty("title");
 
 		String currentTitle = driver.getTitle();
