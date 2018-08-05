@@ -129,7 +129,7 @@ public class BrowserUtils {
 		return element;
 	}
 
-	/**
+	/*
 	 * takes screenshot
 	 * 
 	 * @param name take a name of a test and returns a path to screenshot takes
@@ -151,7 +151,7 @@ public class BrowserUtils {
 		return target;
 	}
 
-	/**
+	/*
 	 * This method will check is your element is clickble, return true or false
 	 */
 	public static boolean isClickable(WebElement webElement)      
