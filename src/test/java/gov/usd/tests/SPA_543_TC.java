@@ -37,9 +37,9 @@ public class SPA_543_TC extends TestBase{
 
 		action.moveToElement(hp.profileMenu).perform();
 
-		Assert.assertTrue(hp.profilesFederalAccountsOption.isDisplayed());
+		Assert.assertTrue(hp.federalAccountsSubMenu.isDisplayed());
 
-		hp.profilesFederalAccountsOption.click();
+		hp.federalAccountsSubMenu.click();
 
 	}
 

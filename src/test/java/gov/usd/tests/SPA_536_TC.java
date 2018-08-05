@@ -36,7 +36,7 @@ public class SPA_536_TC extends TestBase{
 
 		action.moveToElement(hp.profileMenu).perform();
 
-		Assert.assertTrue(hp.profilesFederalAccountsOption.isDisplayed());
+		Assert.assertTrue(hp.federalAccountsSubMenu.isDisplayed());
 
 	}
 
@@ -44,7 +44,7 @@ public class SPA_536_TC extends TestBase{
 	@Test(priority = 3, description = "Verifying POT Down Button Active")
 	public void potDownButtonActive() {
 
-		hp.agencies.click();
+		hp.agenciesSubMenu.click();
 
 		String buttonActive = "sort-icon active";
 
