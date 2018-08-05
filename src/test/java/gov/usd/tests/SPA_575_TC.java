@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import gov.usd.pages.HomePage;
@@ -26,7 +27,7 @@ public class SPA_575_TC extends TestBase {
 	@Test(priority = 1, description = "Home page Title verification")
 	public void verifyHomePageTitle() {
 
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 	}
 

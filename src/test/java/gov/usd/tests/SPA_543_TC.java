@@ -26,7 +26,7 @@ public class SPA_543_TC extends TestBase{
 	@Test(priority = 1, description = "Title verification")
 	public void verificationTitle() {
 
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 		
 	}
 
@@ -63,8 +63,6 @@ public class SPA_543_TC extends TestBase{
 		BrowserUtils.waitFor(2);
 
 		Assert.assertTrue(fap.backPagerBtn.isEnabled());
-
-		extentLogger.pass("Verified pager button up");
 
 		fap.backPagerBtn.click();
 

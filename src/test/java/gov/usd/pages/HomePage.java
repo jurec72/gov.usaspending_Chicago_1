@@ -70,7 +70,7 @@ public class HomePage {
 	/*
 	 * method open home page, and verify title
 	 */
-	public void goHomePageAndVerifyTitle() {
+	public Boolean goHomePageAndVerifyTitle() {
 
 		// Launch the url
 		driver.get(ConfigurationReader.getProperty("urlUSA"));
@@ -80,7 +80,7 @@ public class HomePage {
 
 		String currentTitle = driver.getTitle();
 
-		Assert.assertEquals(currentTitle, actualTitle);
+		return currentTitle.equals(actualTitle);
 
 	}
 	
@@ -88,7 +88,7 @@ public class HomePage {
 	 * method that HoverOver to profile and click to State, verify Url of State
 	 */
 	
-	public void goToProfileToStateVerifyUrl() {
+	public Boolean goToProfileToStateVerifyUrl() {
 		
 		HomePage hp=new HomePage();
 		
@@ -100,7 +100,7 @@ public class HomePage {
 
 		String actualUrl = driver.getCurrentUrl();
 
-		Assert.assertEquals(expectedUrl, actualUrl);
+		return expectedUrl.equals(actualUrl);
 	}
 	
 

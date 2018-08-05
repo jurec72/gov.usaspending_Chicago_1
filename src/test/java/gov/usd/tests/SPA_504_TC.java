@@ -40,9 +40,10 @@ public class SPA_504_TC extends TestBase{
 	}
 	@Test(priority = 4 , description = "click Community in the title text")
 	public void clickCommunity() {
+		BrowserUtils.waitFor(1);
 		hp.clickCommunity.click();
-		BrowserUtils.switchToWindow("Topics – USAspending");
-		Assert.assertEquals(driver.getTitle(), "Topics – USAspending");
+		BrowserUtils.switchToWindow("Topics - USAspending");
+		Assert.assertEquals(driver.getTitle(), "Topics - USAspending");
 		
 	}
 	@Test(priority = 5 , description = "click X on the right side of the title text")

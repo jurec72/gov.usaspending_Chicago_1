@@ -24,7 +24,7 @@ public class SPA_511_TC extends TestBase {
 	@Test(priority = 1, description = "Launching to the home page")
 	public void titleVerification() {
 
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 		
 	}
 

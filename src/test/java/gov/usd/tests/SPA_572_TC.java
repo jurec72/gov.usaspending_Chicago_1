@@ -22,7 +22,7 @@ public class SPA_572_TC extends TestBase {
 	@Test(priority = 1, description = "Home page Title verification")
 	public void verifyHomePageTitle() {
 		
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 	}
 
@@ -41,8 +41,6 @@ public class SPA_572_TC extends TestBase {
 		BrowserUtils.waitFor(2);
 
 		Assert.assertTrue(fap.backPagerBtn.isEnabled());
-
-		extentLogger.pass("Verified pager button up");
 
 		fap.backPagerBtn.click();
 
