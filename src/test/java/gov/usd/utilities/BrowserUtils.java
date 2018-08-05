@@ -24,7 +24,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserUtils {
-	/*
+	/**
 	 * switches to new window by the exact title
 	 */
 	public static void switchToWindow(String targetTitle) {
@@ -40,7 +40,7 @@ public class BrowserUtils {
 
 	public static void hover(WebElement element) {
 		Actions actions = new Actions(Driver.getDriver());
-		actions.moveToElement(element).perform();
+		actions.moveToElement(element).build().perform();
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class BrowserUtils {
 		return element;
 	}
 
-	/*
+	/**
 	 * takes screenshot
 	 * 
 	 * @param name take a name of a test and returns a path to screenshot takes
@@ -151,7 +151,7 @@ public class BrowserUtils {
 		return target;
 	}
 
-	/*
+	/**
 	 * This method will check is your element is clickble, return true or false
 	 */
 	public static boolean isClickable(WebElement webElement)      

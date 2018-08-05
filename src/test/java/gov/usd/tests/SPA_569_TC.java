@@ -49,7 +49,7 @@ public class SPA_569_TC extends TestBase {
 		action.moveToElement(hp.profileMenu).build().perform();
 
 		// action.moveToElement(hp.federalAccounts).build().perform();
-		hp.profilesFederalAccountsOption.click();
+		hp.federalAccountsSubMenu.click();
 
 	}
 

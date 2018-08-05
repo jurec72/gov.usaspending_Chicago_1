@@ -101,7 +101,7 @@ public class FederalAccountsPage {
 		
 		action.moveToElement(hp.profileMenu).build().perform();
 
-		hp.profilesFederalAccountsOption.click();
+		hp.federalAccountsSubMenu.click();
 
 		String actualUrl = driver.getCurrentUrl();
 

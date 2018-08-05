@@ -106,7 +106,7 @@ public abstract class TestBase {
 	@AfterSuite(alwaysRun=true)
 	public void setUpClose() {
 
-		Driver.closeDriver();
+//		Driver.closeDriver();
 	}
 
 }

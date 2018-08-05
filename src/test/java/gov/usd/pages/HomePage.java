@@ -32,8 +32,8 @@ public class HomePage {
 	@FindBy(linkText = "States")
 	public WebElement profilesStateOption;
 
-	@FindBy(xpath = "//ul[@class='nav-children__list']/li/a[.='Federal Accounts']")
-	public WebElement profilesFederalAccountsOption;
+	@FindBy(xpath = "//a[contains(text(),'Federal Accounts')]")
+	public WebElement federalAccountsSubMenu;
 
 	@FindBy(xpath = "//div[@id='logo']/a")
 	public WebElement logo;
@@ -41,9 +41,47 @@ public class HomePage {
 	@FindBy(xpath = "//ul[@class='full-menu__list']")
 	public WebElement mainMenu;
 	
+	@FindBy(xpath = "//a[@class='full-menu__link']/span")
+	public WebElement spendingExplorerMenu;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div/div/div[1]/header/nav/div/div[4]/ul/li[3]/div/div/ul/li[1]/a")
-	public WebElement agencies;
+	@FindBy(xpath = "//div[contains(text(),'Award Search')]")
+	public WebElement awardSearchMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Advanced Search')]")
+	public WebElement advancedSearchSubMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Keyword Search')]")
+	public WebElement keywordSearchSubMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Agencies')]")
+	public WebElement agenciesSubMenu;
+
+	@FindBy(xpath = "//a[contains(@class,'nav-children__link')][contains(text(),'States')]")
+	public WebElement statesSubMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Award Data Archive')]")
+	public WebElement awardDataArchiveMenu;
+	
+	@FindBy(xpath = "//div[@class='glossary-nav__label']")
+	public WebElement glossaryMenu;
+	
+	@FindBy(xpath = "//div[@class='usa-da-glossary-wrapper']")
+	public WebElement glossaryExtraMenu;
+
+	@FindBy(xpath = "//div[contains(text(),'Download Center')]")
+	public WebElement downloadCenterMenu;
+
+	@FindBy(xpath = "//a[contains(@class,'nav-children__link')][contains(text(),'Custom Award Data')]")
+	public WebElement customAwardDataSubMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Agency Submission Files')]")
+	public WebElement agencySubmissionFilesSubMenu;
+
+	@FindBy(xpath = "//a[contains(text(),'Database Download')]")
+	public WebElement databaseDownloadSubMenu;
+	
+	@FindBy(xpath = "//a[contains(@class,'nav-children__link')][contains(text(),'API')]")
+	public WebElement apiSubMenu;
 
 	@FindBy(xpath = "//div[@class='info-banner__alert-text']")
 	public WebElement textOfTheMessage;
@@ -56,7 +94,6 @@ public class HomePage {
 	
 	@FindBy(xpath = "//button[@class='info-banner__close-button']")
 	public WebElement clickXBtn;
-
 
 	@FindBy(linkText="Agencies")
 	public WebElement profilesAgenciesOption;
