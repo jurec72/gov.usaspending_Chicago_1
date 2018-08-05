@@ -38,6 +38,10 @@ public class HomePage {
 	@FindBy(xpath = "//ul[@class='full-menu__list']")
 	public WebElement mainMenu;
 	
+
+	@FindBy(xpath = "//*[@id=\"app\"]/div/div/div[1]/header/nav/div/div[4]/ul/li[3]/div/div/ul/li[1]/a")
+	public WebElement agencies;
+
 	@FindBy(xpath = "//div[@class='info-banner__alert-text']")
 	public WebElement textOfTheMessage;
 	
@@ -56,9 +60,12 @@ public class HomePage {
 	@FindBy(linkText = "Join the Conversation")
 	public WebElement communityText;
 
-
 	@FindBy(linkText="Agencies")
 	public WebElement profilesAgenciesOption;
+	
+	@FindBy(linkText="Federal Accounts")
+	public WebElement profilesFederelAccountsOption;
+	
 	
 	/*
 	 * method open home page, and verify title
@@ -95,29 +102,6 @@ public class HomePage {
 
 		Assert.assertEquals(expectedUrl, actualUrl);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

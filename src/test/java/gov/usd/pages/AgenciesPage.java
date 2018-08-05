@@ -21,6 +21,9 @@ public class AgenciesPage {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(xpath="//*[@id=\"agency-landing-results\"]/div/div/table/thead/tr/td[3]/div/div/div/div[2]/button[2]")
+	public WebElement potDownBtn;
+	
 	@FindBy(xpath = "//*[contains(text(),'Sort table by descending Percent of Total')]/..")
 	public WebElement agenciesDescending;
 
@@ -41,6 +44,19 @@ public class AgenciesPage {
 
 	@FindBy(xpath = "//div[@class='agency-link-cell column-agency_name']/div")
 	public List<WebElement> agenciesAgencyNameList;
+	
+	@FindBy(xpath = "//h2[@class='landing-page__title']")
+	public WebElement agenciesTitle;
+	
+	@FindBy(xpath="//input[@class='search-section__input']")
+	public WebElement searchInput;
+	
+	@FindBy(xpath = "//div[@class='agency-link-cell column-agency_name']/div")
+	public List<WebElement> searchResult;
+	
+	@FindBy(xpath = "//div[@class='results-count']")
+	public WebElement searchCount;
+	
 /*
  * this method converted String to Double
  */
@@ -74,3 +90,4 @@ public class AgenciesPage {
 
 	}
 }
+
