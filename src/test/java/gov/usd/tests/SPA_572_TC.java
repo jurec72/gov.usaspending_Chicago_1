@@ -22,27 +22,27 @@ public class SPA_572_TC extends TestBase {
 	@Test(priority = 1, description = "Home page Title verification")
 	public void verifyHomePageTitle() {
 		
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 	}
 
 	@Test(priority = 2, description = "Hover over the PROFILE to reach Federal Accounts link")
 	public void openFederalAccounts() {
 
-		fap.goProfileGoFederalAccVerUrl();
+		Assert.assertTrue(fap.goProfileGoFederalAccVerUrl());
 
 	}
 
 	@Test(priority = 3, description = "Verifying pager buttons")
 	public void pagerButton() {
 
+		BrowserUtils.waitFor(2);
+		
 		fap.nextPagerBtn.click();
 
 		BrowserUtils.waitFor(2);
 
 		Assert.assertTrue(fap.backPagerBtn.isEnabled());
-
-		extentLogger.pass("Verified pager button up");
 
 		fap.backPagerBtn.click();
 

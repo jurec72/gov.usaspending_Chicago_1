@@ -116,6 +116,7 @@ public class SPA_569_TC extends TestBase {
 			
 		
 			accountNameDown.add(fap.accountNameRow.get(i).getText().substring(0, 1));
+			
 			expectedNameDown.add(fap.accountNameRow.get(i).getText().substring(0, 1));
 
 		}

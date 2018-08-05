@@ -24,7 +24,7 @@ public class SPA_574_TC extends TestBase {
 	@Test(priority = 1, description = "Home page Title verification")
 	public void verifyHomePageTitle() {
 
-		hp.goHomePageAndVerifyTitle();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
 	}
 
@@ -32,7 +32,7 @@ public class SPA_574_TC extends TestBase {
 
 	public void stateUrl() {
 
-		hp.goToProfileToStateVerifyUrl();
+		Assert.assertTrue(hp.goToProfileToStateVerifyUrl());
 
 
 	}
@@ -54,8 +54,6 @@ public class SPA_574_TC extends TestBase {
 		Collections.sort(expectedStatesAwardedAmountAssending);
 
 		Assert.assertEquals(expectedStatesAwardedAmountAssending, actualStatesAwardedAmountAssending);
-		
-		extentLogger.pass("Verification  assending order are pass");
 
 		psp.clickToGetDecendingOrder.click();
 

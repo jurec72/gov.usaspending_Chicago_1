@@ -24,7 +24,7 @@ public class SPA_570_TC extends TestBase {
 
 		driver.get(ConfigurationReader.getProperty("urlUSA"));
 		
-		fap.goProfileGoFederalAccVerUrl();
+		Assert.assertTrue(fap.goProfileGoFederalAccVerUrl());
 
 	}
 

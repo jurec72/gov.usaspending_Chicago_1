@@ -61,9 +61,9 @@ public class SPA_515_TC extends TestBase {
 
 		action.moveToElement(hp.profileMenu).perform();
 
-		Assert.assertTrue(hp.profilesFederalAccountsOption.isDisplayed());
+		Assert.assertTrue(hp.federalAccountsSubMenu.isDisplayed());
 
-		hp.profilesFederalAccountsOption.click();
+		hp.federalAccountsSubMenu.click();
 
 		Assert.assertTrue(fa.federalAccountsTitle.isDisplayed());
 

@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import gov.usd.TestBase.TestBase;
 import gov.usd.pages.FederalAccountsPage;
 import gov.usd.pages.HomePage;
+import gov.usd.utilities.BrowserUtils;
 import gov.usd.utilities.ConfigurationReader;
 
 public class SPA_580_TC extends TestBase {
@@ -22,7 +23,8 @@ public class SPA_580_TC extends TestBase {
 
 		driver.get(ConfigurationReader.getProperty("urlUSA"));
 
-		fap.goProfileGoFederalAccVerUrl();
+		Assert.assertTrue(fap.goProfileGoFederalAccVerUrl());
+
 
 	}
 
@@ -37,9 +39,6 @@ public class SPA_580_TC extends TestBase {
 
 		fap.descendAccountNumBtn.click();
 
-		extentLogger = report
-				.createTest("Before comparing ascending and actual >results from Account Number functionality");
-
 		Assert.assertNotEquals(actualList, expRes);
 		
 	}
@@ -52,6 +51,8 @@ public class SPA_580_TC extends TestBase {
 		List<Integer> expRes = fap.convertingToInteger();
 
 		Collections.reverse(expRes);
+		
+		BrowserUtils.waitFor(2);
 		
 		fap.descendAccountNumBtn.click();
 	

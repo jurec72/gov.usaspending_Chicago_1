@@ -41,7 +41,7 @@ public class SPA_538_TC extends TestBase {
 
 	@Test(priority = 2, description = "Profiles is clickble")
 
-	public void hoverOver() throws InterruptedException {
+	public void hoverOver() {
 
 		Actions action = new Actions(driver);
 
@@ -55,7 +55,9 @@ public class SPA_538_TC extends TestBase {
 
 	@Test(priority = 3, description = "Verifing Percent Of Total ascending order")
 
-	public void agengiesAscendingOrder() throws InterruptedException {
+	public void agengiesAscendingOrder()  {
+		
+		BrowserUtils.waitFor(1);
 
 		ap.agenciesAscending.click();
 
