@@ -4,8 +4,8 @@ package gov.usd.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import gov.usd.TestBase.TestBase;
 import gov.usd.pages.HomePage;
+import gov.usd.tests.TestBase.TestBase;
 import gov.usd.utilities.BrowserUtils;
 import gov.usd.utilities.ConfigurationReader;
 

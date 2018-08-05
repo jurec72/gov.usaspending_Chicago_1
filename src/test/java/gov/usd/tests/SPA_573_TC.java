@@ -7,9 +7,9 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import gov.usd.TestBase.TestBase;
 import gov.usd.pages.HomePage;
 import gov.usd.pages.ProfilesStatePage;
+import gov.usd.tests.TestBase.TestBase;
 import gov.usd.utilities.BrowserUtils;
 
 public class SPA_573_TC extends TestBase {

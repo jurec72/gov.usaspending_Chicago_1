@@ -6,9 +6,9 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import gov.usd.TestBase.TestBase;
 import gov.usd.pages.FederalAccountsPage;
 import gov.usd.pages.HomePage;
+import gov.usd.tests.TestBase.TestBase;
 import gov.usd.utilities.ConfigurationReader;
 
 public class SPA_580_TC extends TestBase {

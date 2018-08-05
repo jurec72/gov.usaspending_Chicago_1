@@ -9,9 +9,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-import gov.usd.TestBase.TestBase;
 import gov.usd.pages.AgenciesPage;
 import gov.usd.pages.HomePage;
+import gov.usd.tests.TestBase.TestBase;
 import gov.usd.utilities.ConfigurationReader;
 import gov.usd.utilities.Driver;
 

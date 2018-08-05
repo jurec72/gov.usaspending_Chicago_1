@@ -9,10 +9,9 @@ import java.util.List;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-import gov.usd.TestBase.TestBase;
 import gov.usd.pages.FederalAccountsPage;
 import gov.usd.pages.HomePage;
-
+import gov.usd.tests.TestBase.TestBase;
 import gov.usd.utilities.BrowserUtils;
 import gov.usd.utilities.Driver;
 

@@ -2,8 +2,9 @@ package gov.usd.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import gov.usd.TestBase.TestBase;
+
 import gov.usd.pages.HomePage;
+import gov.usd.tests.TestBase.TestBase;
 
 public class SPA_261_TC extends TestBase {
 
