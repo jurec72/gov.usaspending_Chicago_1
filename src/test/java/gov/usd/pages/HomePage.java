@@ -1,8 +1,5 @@
 package gov.usd.pages;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -56,6 +53,12 @@ public class HomePage {
 	
 	@FindBy(xpath = "//button[@class='info-banner__close-button']")
 	public WebElement clickXBtn;
+	
+	@FindBy(xpath = "//a[@class='sidebar-link active']")
+	public WebElement Abouttext;
+	
+	@FindBy(linkText = "Join the Conversation")
+	public WebElement communityText;
 
 	@FindBy(linkText="Agencies")
 	public WebElement profilesAgenciesOption;
@@ -99,29 +102,6 @@ public class HomePage {
 
 		Assert.assertEquals(expectedUrl, actualUrl);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 }
