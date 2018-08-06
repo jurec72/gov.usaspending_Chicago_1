@@ -20,6 +20,7 @@ public class SPA_541_TC extends TestBase {
 	public void agenciesPageSearchTest() {
 
 		extentLogger = report.createTest("Check search result on Agencies page");
+		
 		HomePage hp = new HomePage();
 
 		AgenciesPage ap = new AgenciesPage();
