@@ -11,40 +11,38 @@ import gov.usd.utilities.BrowserUtils;
 
 public class SPA_572_TC extends TestBase {
 
-	FederalAccountsPage fap = new FederalAccountsPage();
-
-	HomePage hp = new HomePage();
-
-	ProfilesStatePage psp = new ProfilesStatePage();
-
-	@Test(priority = 1, description = "Home page Title verification")
-	public void verifyHomePageTitle() {
+	@Test(priority = 18, description = "Check Federal Accounts change pages ")
+	public void pageBtnTest() {
 		
+		extentLogger = report.createTest("Check Federal Accounts change pages ");
+
+		FederalAccountsPage fap = new FederalAccountsPage();
+
+		HomePage hp = new HomePage();
+
 		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
-
-	}
-
-	@Test(priority = 2, description = "Hover over the PROFILE to reach Federal Accounts link")
-	public void openFederalAccounts() {
+		
+		extentLogger.pass("Verified title of the home page ");
 
 		Assert.assertTrue(fap.goProfileGoFederalAccVerUrl());
-
-	}
-
-	@Test(priority = 3, description = "Verifying pager buttons")
-	public void pagerButton() {
+		
+		extentLogger.pass("Verified url of the Federal Accounts page ");
 
 		BrowserUtils.waitFor(2);
-		
+
 		fap.nextPagerBtn.click();
 
 		BrowserUtils.waitFor(2);
 
 		Assert.assertTrue(fap.backPagerBtn.isEnabled());
+		
+		extentLogger.pass("Verified button back ");
 
 		fap.backPagerBtn.click();
 
 		Assert.assertTrue(!fap.backPagerBtn.isEnabled());
+		
+		extentLogger.pass("Verified button forward ");
 
 	}
 
