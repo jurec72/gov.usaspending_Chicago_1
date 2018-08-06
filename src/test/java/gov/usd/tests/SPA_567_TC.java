@@ -19,27 +19,24 @@ import gov.usd.utilities.Driver;
 
 public class SPA_567_TC extends TestBase {
 
-	Actions action = new Actions(Driver.getDriver());
+	@Test(priority = 14, description = "Check title, Profile menu, Check after click on Account"
+			+ " Number btn gives descending order")
 
-	HomePage hp = new HomePage();
+	public void accountNumberShortTest() {
+		extentLogger = report
+				.createTest("Check title, Profile menu, Check after click on Account Num btn gives descending order");
 
-	FederalAccountsPage fap = new FederalAccountsPage();
+		HomePage hp = new HomePage();
 
-	@Test(priority = 1, description = "Home page Title verification")
-	public void verifyHomePageTitle() {
+		FederalAccountsPage fap = new FederalAccountsPage();
 
 		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
-	}
 
-	@Test(priority = 2, description = "Hover over the PROFILE to reach Federal Accounts link")
-	public void openFederalAccounts() {
+		extentLogger.pass("Verified title of the Home page");
 
 		Assert.assertTrue(fap.goProfileGoFederalAccVerUrl());
 
-	}
-
-	@Test(priority = 3, description = "Check after click on Account Number btn gives descending order")
-	public void descendingOrder() {
+		extentLogger.pass("Verified  federal profile verification");
 
 		BrowserUtils.waitFor(1);
 
@@ -60,19 +57,15 @@ public class SPA_567_TC extends TestBase {
 		Collections.reverse(reverseResultOfNumber);
 
 		assertEquals(actualResultOfNumber, reverseResultOfNumber, "verify descending order");
-
-	}
-
-	@Test(priority = 4, description = "Check after click on Account Number btn gives ascending order")
-	public void desendingOrder() {
+		extentLogger.pass("verify descending order");
 
 		fap.accountNumBtn.click();
 
 		BrowserUtils.waitFor(1);
 
-		List<String> actualResultOfNumber = new ArrayList<>();
+		List<String> actualResultOfNumber1 = new ArrayList<>();
 
-		fap.accountNumColomn.stream().forEach(y -> actualResultOfNumber.add(y.getText().substring(0, 3)));
+		fap.accountNumColomn.stream().forEach(y -> actualResultOfNumber1.add(y.getText().substring(0, 3)));
 
 		List<String> sortedResultOfNumber = new ArrayList<>();
 
@@ -80,7 +73,9 @@ public class SPA_567_TC extends TestBase {
 
 		Collections.sort(sortedResultOfNumber);
 
-		assertEquals(actualResultOfNumber, sortedResultOfNumber, "verify descending order");
+		assertEquals(actualResultOfNumber1, sortedResultOfNumber, "Verified ascending order Account Number Colomn");
+
+		extentLogger.pass("Verified ascending order Account Number Colomn");
 
 	}
 
