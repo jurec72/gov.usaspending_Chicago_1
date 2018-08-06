@@ -1,7 +1,5 @@
 package gov.usd.tests;
 
-
-
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,63 +11,41 @@ import gov.usd.pages.ProfilesStatePage;
 import gov.usd.utilities.BrowserUtils;
 import gov.usd.utilities.ConfigurationReader;
 
+public class SPA_543_TC extends TestBase {
 
-public class SPA_543_TC extends TestBase{
+	@Test(priority = 13, description = "Hover over drop down Functionality")
+	public void HoverOverDropDownFunctionality() {
 
-	FederalAccountsPage fap = new FederalAccountsPage();
+		extentLogger = report.createTest(
+				"Check federal url, title of the Home Page, Profiles is clickble and pager buttons");
 
-	HomePage hp=new HomePage();
-
-
-	ProfilesStatePage psp = new ProfilesStatePage();
-
-	@Test(priority = 1, description = "Title verification")
-	public void verificationTitle() {
-
-		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
-		
-	}
-
-	@Test(priority = 2, description = "Profiles is clickble")
-	public void hoverOver() throws InterruptedException {
-
+		FederalAccountsPage fap = new FederalAccountsPage();
+		HomePage hp = new HomePage();
+		ProfilesStatePage psp = new ProfilesStatePage();
 		Actions action = new Actions(driver);
 
-		action.moveToElement(hp.profileMenu).perform();
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
+		extentLogger.pass("Verified title of the Home Page");
 
+		action.moveToElement(hp.profileMenu).perform();
 		Assert.assertTrue(hp.federalAccountsSubMenu.isDisplayed());
+		extentLogger.pass("Verified is federal account sub menu displayed");
 
 		hp.federalAccountsSubMenu.click();
-
-	}
-
-
-	@Test(priority = 3, description = "Verifying federal url")
-	public void statesUrl() {
-
 		String expectedUrl = ConfigurationReader.getProperty("urlFederal");
-
 		String actualUrl = driver.getCurrentUrl();
-
 		Assert.assertEquals(expectedUrl, actualUrl);
-
-	}
-
-	@Test(priority=4,description="Verifying pager buttons")
-	public void pagerButton(){
+		extentLogger.pass("Verified federal url");
 
 		fap.nextPagerBtn.click();
-
 		BrowserUtils.waitFor(2);
-
 		Assert.assertTrue(fap.backPagerBtn.isEnabled());
+		extentLogger.pass("Verified pager buttons is it enable");
 
 		fap.backPagerBtn.click();
-
 		Assert.assertTrue(!fap.backPagerBtn.isEnabled());
+		extentLogger.pass("Verified pager buttons is it enable");
 
 	}
 
 }
-
-

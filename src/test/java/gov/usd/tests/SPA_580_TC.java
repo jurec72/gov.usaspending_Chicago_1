@@ -14,48 +14,35 @@ import gov.usd.utilities.ConfigurationReader;
 
 public class SPA_580_TC extends TestBase {
 
-	FederalAccountsPage fap = new FederalAccountsPage();
 
-	HomePage hp = new HomePage();
 
-	@Test(priority = 1, description = "Hover over the PROFILE to reach Federal Accounts link")
+	@Test(priority = 23, description = "Hover over the PROFILE to reach Federal Accounts link, Check ascending and descending order")
 	public void openFederalAccounts() {
-
-		driver.get(ConfigurationReader.getProperty("urlUSA"));
-
-		Assert.assertTrue(fap.goProfileGoFederalAccVerUrl());
-
-
-	}
-
-	@Test(priority = 2, description = "Check ascending order")
-	public void ascending() {
+		extentLogger = report.createTest("Hover over the PROFILE to reach Federal Accounts link, Check ascending and descending order");
 		
+		FederalAccountsPage fap = new FederalAccountsPage();
+		
+		driver.get(ConfigurationReader.getProperty("urlUSA"));
+		Assert.assertTrue(fap.goProfileGoFederalAccVerUrl());
+		extentLogger.pass("Verified Federal Account Url");
+
 		List<Integer> actualList = fap.convertingToInteger();
-
 		List<Integer> expRes = fap.convertingToInteger();
-
+		
 		Collections.sort(expRes);
-
 		fap.descendAccountNumBtn.click();
 
 		Assert.assertNotEquals(actualList, expRes);
+		extentLogger.pass("Check ascending order");
 		
-	}
-	
-	@Test(priority = 3, description = "Check descending order")
-	public void descending() {
-		
-		List<Integer> actualList = fap.convertingToInteger();
+		List<Integer> actualList1 = fap.convertingToInteger();
+		List<Integer> expRes1 = fap.convertingToInteger();
 
-		List<Integer> expRes = fap.convertingToInteger();
-
-		Collections.reverse(expRes);
-		
+		Collections.reverse(expRes1);
 		BrowserUtils.waitFor(2);
-		
 		fap.descendAccountNumBtn.click();
 	
-		Assert.assertEquals(actualList, expRes);
+		Assert.assertEquals(actualList1, expRes1);
+		extentLogger.pass("Check descending order");
 	}
 }
