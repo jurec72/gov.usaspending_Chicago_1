@@ -10,79 +10,90 @@ import gov.usd.pages.FederalAccountsPage;
 import gov.usd.pages.HomePage;
 import gov.usd.pages.ProfilesStatePage;
 import gov.usd.utilities.BrowserUtils;
-import gov.usd.utilities.ConfigurationReader;
 
 public class SPA_515_TC extends TestBase {
-	BrowserUtils br = new BrowserUtils();
 
-	AgenciesPage ap = new AgenciesPage();
+	@Test(priority = 4, description = "Check title of the Home Page, Profile menu and Agencies submanu")
 
-	HomePage hp = new HomePage();
+	public void profileMenuTest() {
 
-	FederalAccountsPage fa = new FederalAccountsPage();
+		extentLogger = report.createTest("Check title of the Home Page, Profile menu and Agencies submanu");
 
-	ProfilesStatePage psp = new ProfilesStatePage();
+		AgenciesPage ap = new AgenciesPage();
 
-	@Test(priority = 1, description = "Verifing current title")
-
-	public void verificationTitle() {
-
-		driver.get(ConfigurationReader.getProperty("urlUSA"));
-
-		String currentTitle = ConfigurationReader.getProperty("title");
-
-		String actualTitle = driver.getTitle();
-
-		Assert.assertEquals(currentTitle, actualTitle, "Verifing current title");
-
-	}
-
-	@Test(priority = 2, description = "Profiles is clickble")
-
-	public void hoverOver() throws InterruptedException {
-
+		HomePage hp = new HomePage();
+		
 		Actions action = new Actions(driver);
+
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
+
+		extentLogger.pass("Verified title of the Home page");
 
 		action.moveToElement(hp.profileMenu).perform();
 
 		Assert.assertTrue(hp.profilesAgenciesOption.isDisplayed());
+		
+		extentLogger.pass("Verified Agencies submenu from Profile is working");
 
 		hp.profilesAgenciesOption.click();
 
 		Assert.assertTrue(ap.agenciesTitle.isDisplayed());
+		
+		extentLogger.pass("Verified title of the Agencies page");
 
 	}
 
-	@Test(priority = 3, description = "Verify it goes to Federal AccountsPage")
+	@Test(priority = 5, description = "Check Federal Accounts Page")
 
-	public void federalAccountsPageIsDisplayed() {
+	public void federalAccountsPageTest() {
+		
+		extentLogger = report.createTest("Check Federal Accounts submenu");
+		
+		HomePage hp = new HomePage();
+
+		FederalAccountsPage fa = new FederalAccountsPage();
 
 		Actions action = new Actions(driver);
 
 		action.moveToElement(hp.profileMenu).perform();
 
 		Assert.assertTrue(hp.federalAccountsSubMenu.isDisplayed());
-
+		
+		extentLogger.pass("Verified Federal Accounts submenu from Profile");
+		
 		hp.federalAccountsSubMenu.click();
 
 		Assert.assertTrue(fa.federalAccountsTitle.isDisplayed());
-
+		
+		extentLogger.pass("Verified Federal Accounts page title");
+		
 	}
 
-	@Test(priority = 4, description = "Verify  State Page")
+	@Test(priority = 6, description = "Check States Page from Profile menu")
 
-	public void statePageIsDisplayed() throws InterruptedException {
+	public void statePageTest() {
+		
+		extentLogger = report.createTest("Check States submenu");
 
 		Actions action = new Actions(driver);
+		
+		HomePage hp = new HomePage();
+		
+		ProfilesStatePage psp = new ProfilesStatePage();
 
-		Thread.sleep(2000);
+		BrowserUtils.waitFor(2);
+		
 		action.moveToElement(hp.profileMenu).perform();
 
 		Assert.assertTrue(hp.profilesStateOption.isDisplayed());
+		
+		extentLogger.pass("Verified States submenu from Profile");
 
 		hp.profilesStateOption.click();
 
 		Assert.assertTrue(psp.stateTitle.isDisplayed());
+		
+		extentLogger.pass("Verified States page title");
 
 	}
 }

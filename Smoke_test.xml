@@ -7,10 +7,10 @@
 	<class name="gov.usd.tests.SPA_261_TC"></class>
 	<class name="gov.usd.tests.SPA_504_TC"></class>
 	<class name="gov.usd.tests.SPA_511_TC"></class>
- 	<!-- <class name="gov.usd.tests.SPA_515_TC"></class>
-	<class name="gov.usd.tests.SPA_520_TC"></class>
+  <class name="gov.usd.tests.SPA_515_TC"></class>
+<class name="gov.usd.tests.SPA_520_TC"></class>
 	<class name="gov.usd.tests.SPA_536_TC"></class>
-	<class name="gov.usd.tests.SPA_538_TC"></class>
+	<!-- <class name="gov.usd.tests.SPA_538_TC"></class>
 	<class name="gov.usd.tests.SPA_541_TC"></class>
 	<class name="gov.usd.tests.SPA_543_TC"></class>
 	<class name="gov.usd.tests.SPA_567_TC"></class>
