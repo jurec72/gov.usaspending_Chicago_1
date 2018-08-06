@@ -15,31 +15,23 @@ import gov.usd.utilities.BrowserUtils;
 
 public class SPA_574_TC extends TestBase {
 
-	BrowserUtils br = new BrowserUtils();
+	
+	@Test(priority = 20, description = "Verification States Awarded Amount in Ascending And Descending Order")
+	public void sortStatesAwardedAmountInAscAndDescOrder() {
+		
+		extentLogger = report.createTest("Verification States Awarded Amount in Ascending And Descending Order");
 
-	HomePage hp = new HomePage();
+		HomePage hp = new HomePage();
 
-	ProfilesStatePage psp = new ProfilesStatePage();
-
-	@Test(priority = 1, description = "Home page Title verification")
-	public void verifyHomePageTitle() {
+		ProfilesStatePage psp = new ProfilesStatePage();
 
 		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
-
-	}
-
-	@Test(priority = 2, description = "Check Profile State option")
-
-	public void stateUrl() {
+		
+		extentLogger.pass("Verified  home page title");
 
 		Assert.assertTrue(hp.goToProfileToStateVerifyUrl());
 
-
-	}
-
-	@Test(priority = 3, description = "Verifing assending and decending order of statesAwardedAmount")
-
-	public void sortStatesAwardedAmount() {
+		extentLogger.pass("Verified  states url");
 
 		BrowserUtils.waitFor(1);
 
@@ -55,16 +47,17 @@ public class SPA_574_TC extends TestBase {
 
 		Assert.assertEquals(expectedStatesAwardedAmountAssending, actualStatesAwardedAmountAssending);
 
+		extentLogger.pass("Verified States Awarded Amount Ascending order");
+		
 		psp.clickToGetDecendingOrder.click();
 
 		List<Double> actualStatesAwardedAmountDecending = psp.convertingToDouble();
 
 		Collections.reverse(expectedStatesAwardedAmountAssending);
 
-		System.out.println(expectedStatesAwardedAmountAssending);
-
 		Assert.assertEquals(expectedStatesAwardedAmountAssending, actualStatesAwardedAmountDecending);
 
+		extentLogger.pass("Verified States Awarded Amount Descending order");
 	}
 
 }
