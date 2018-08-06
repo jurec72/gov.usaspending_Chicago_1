@@ -1,7 +1,5 @@
 package gov.usd.tests;
 
-
-
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,40 +7,29 @@ import org.testng.annotations.Test;
 import gov.usd.TestBase.TestBase;
 import gov.usd.pages.AgenciesPage;
 import gov.usd.pages.HomePage;
-import gov.usd.pages.ProfilesStatePage;
-import gov.usd.utilities.ConfigurationReader;
 
+public class SPA_536_TC extends TestBase {
 
-public class SPA_536_TC extends TestBase{
+	@Test(priority = 8, description = "Check POT Down Button Active")
+	public void POTDwonBtnTest() {
 
-	HomePage hp=new HomePage();
+		extentLogger = report.createTest("Check POT Down Button Active");
 
-	AgenciesPage ap = new AgenciesPage();
+		HomePage hp = new HomePage();
 
-
-	ProfilesStatePage psp = new ProfilesStatePage();
-
-	@Test(priority = 1, description = "Title verification")
-	public void verificationTitle() {
-
-		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
-		
-	}
-
-	@Test(priority = 2, description = "Profiles is clickble")
-	public void hoverOver() throws InterruptedException {
+		AgenciesPage ap = new AgenciesPage();
 
 		Actions action = new Actions(driver);
+
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
+
+		extentLogger.pass("Verified title of the Home page");
 
 		action.moveToElement(hp.profileMenu).perform();
 
 		Assert.assertTrue(hp.federalAccountsSubMenu.isDisplayed());
 
-	}
-
-
-	@Test(priority = 3, description = "Verifying POT Down Button Active")
-	public void potDownButtonActive() {
+		extentLogger.pass("Verified Federal Accounts submenu");
 
 		hp.agenciesSubMenu.click();
 
@@ -50,9 +37,8 @@ public class SPA_536_TC extends TestBase{
 
 		Assert.assertEquals(ap.potDownBtn.getAttribute("class"), buttonActive);
 
+		extentLogger.pass("Verified POT Down Button");
+
 	}
 
-
 }
-
-

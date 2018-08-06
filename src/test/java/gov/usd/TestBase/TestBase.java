@@ -2,40 +2,40 @@
 package gov.usd.TestBase;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import gov.usd.pages.HomePage;
+import gov.usd.pages.SpendingExplorerPage;
 import gov.usd.utilities.BrowserUtils;
 import gov.usd.utilities.ConfigurationReader;
 import gov.usd.utilities.Driver;
 
 public abstract class TestBase {
 
-	protected WebDriver driver;
+	protected static WebDriver driver;
 
-	protected ExtentReports report;
+	protected static ExtentReports report;
 
-	protected ExtentHtmlReporter htmlReporter;
+	protected static ExtentHtmlReporter htmlReporter;
 
-	protected ExtentTest extentLogger;
-
-	
+	protected static ExtentTest extentLogger;
 
 	
-	@BeforeTest
+
+	
+	@BeforeTest(alwaysRun=true)
 	public void setUpTest() {
 
 		report = new ExtentReports();
@@ -52,12 +52,12 @@ public abstract class TestBase {
 
 		report.setSystemInfo("OS", System.getProperty("os.name"));
 
-		htmlReporter.config().setReportName("Web Orders Automated Test Reports");
+		htmlReporter.config().setReportName("USASPENDING.GOV");
 	}
 	
-	@BeforeClass(alwaysRun=true)
+	@BeforeMethod(alwaysRun=true)
 	public void setUp() {
-
+		
 		driver = Driver.getDriver();
 
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -65,11 +65,13 @@ public abstract class TestBase {
 		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
 		driver.manage().window().fullscreen();
+		
+		driver.get(ConfigurationReader.getProperty("urlUSA"));
 
 	}
 
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun=true)
 	public void tearDown(ITestResult result) throws IOException {
 
 		// checking if the test method failed
@@ -95,20 +97,15 @@ public abstract class TestBase {
 
 			extentLogger.skip("Test Case Skipped is " + result.getName());
 		}
-		
+		Driver.closeDriver();
 
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun=true)
 	public void tearDownTest() {
 
 		report.flush();
 	}
 
-	@AfterSuite(alwaysRun=true)
-	public void setUpClose() {
-
-		Driver.closeDriver();
-	}
 
 }

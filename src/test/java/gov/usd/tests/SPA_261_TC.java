@@ -10,43 +10,30 @@ import gov.usd.pages.HomePage;
 
 public class SPA_261_TC extends TestBase {
 
-	HomePage hp = new HomePage();
+	
 
-	@Test(priority = 1, description = "Home page Title verification")
-	public void verifyHomePageTitle() {
+	@Test(priority = 1, description = "Home page Title, logo, main menu verification")
+	public void verifyHomePageTitleMenu() {
 		
-		extentLogger = report.createTest("1");
+		extentLogger = report.createTest("Home page Title, logo, main menu verification");
+		
+		HomePage hp = new HomePage();
 
-		
 		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 		
-		extentLogger.pass("11");
-
-	}
-
-	@Test(priority = 2, description = "Verifing the logo")
-	public void logoVerification() {
-		
-		extentLogger = report.createTest("2");
+		extentLogger.pass("Verified title of the home page");
 
 		boolean logoVerification = hp.logo.isDisplayed();
 
 		Assert.assertTrue(logoVerification);
 		
-		extentLogger.pass("22");
-
-	}
-
-	@Test(priority = 3, description = "Verifing is the main menu displayed")
-	public void mainMenuDisplayed() {
-		
-		extentLogger = report.createTest("3");
+		extentLogger.pass("Verified logo of the home page");
 
 		boolean menuVerification = hp.mainMenu.isDisplayed();
 
 		Assert.assertTrue(menuVerification);
 		
-		extentLogger.pass("33");
+		extentLogger.pass("Verified main menu of the home page");
 
 	}
 }

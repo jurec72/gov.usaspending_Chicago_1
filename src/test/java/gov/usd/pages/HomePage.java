@@ -109,10 +109,6 @@ public class HomePage {
 	 */
 	public boolean goHomePageAndVerifyTitle() {
 
-		// Launch the url
-		driver.get(ConfigurationReader.getProperty("urlUSA"));
-
-		// Verifing the title
 		String expectedTitle = ConfigurationReader.getProperty("title");
 
 		String currentTitle = driver.getTitle();

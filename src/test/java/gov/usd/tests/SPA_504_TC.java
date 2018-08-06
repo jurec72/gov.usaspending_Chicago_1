@@ -12,39 +12,22 @@ import gov.usd.utilities.ConfigurationReader;
 
 public class SPA_504_TC extends TestBase{
 
-	
-	HomePage hp = new HomePage();
-	
+	@Test(priority = 2, description = "Check the error message of the Home Page, click \"About\""
+			+ " in the error message text, click Community button, close error message")
+	public void homePageMessageTest() {
+		
+		extentLogger = report.createTest("Check Home Page message");
+		
+		HomePage hp = new HomePage();
 
-	@Test(priority = 1, description = "going to the URL")
-	public void goingToUrl() {
-		
-		extentLogger = report.createTest("4");
-		
-		driver.get(ConfigurationReader.getProperty("urlUSA"));
-		
-		extentLogger.pass("44");
-		
-	}
-	
-	@Test(priority = 2, description = "Verifying the title of the text")
-	public void titleText() {
-		
-		extentLogger = report.createTest("5");
-		
 		String titleText = hp.textOfTheMessage.getText();
 		
 		String expectedTitleText = "Welcome to the new USAspending.gov!\n" + 
 				"We will continue to improve the data quality and display on a rolling basis. Questions? Check out our About page for important information on the data and authoritative sources or join the conversation on our Community page.";
+		
 		Assert.assertEquals(expectedTitleText, titleText);
 		
-		extentLogger.pass("55");
-	}
-	
-	@Test(priority = 3, description = "click About in the title text and verify if it is functioning")
-	public void clickAbout() {
-		
-		extentLogger = report.createTest("6");
+		extentLogger.pass("Verified the error message of the Home Page");
 		
 		hp.clickAbout.click();
 		
@@ -52,14 +35,7 @@ public class SPA_504_TC extends TestBase{
 		
 		Assert.assertEquals(ConfigurationReader.getProperty("expectedAbout"), actualText);
 		
-		extentLogger.pass("66");
-	
-	}
-	
-	@Test(priority = 4 , description = "click Community in the title text")
-	public void clickCommunity() {
-		
-		extentLogger = report.createTest("7");
+		extentLogger.pass("Verified title of the About page");
 		
 		hp.clickCommunity.click();
 		
@@ -67,14 +43,7 @@ public class SPA_504_TC extends TestBase{
 		
 		Assert.assertEquals(driver.getTitle(), "Topics – USAspending");
 		
-		extentLogger.pass("77");
-		
-	}
-	
-	@Test(priority = 5 , description = "click X on the right side of the title text")
-	public void clickXBtn() {
-		
-		extentLogger = report.createTest("8");
+		extentLogger.pass("Verified Community button title");
 	
 		BrowserUtils.switchToWindow("USAspending.gov");
 		
@@ -82,7 +51,7 @@ public class SPA_504_TC extends TestBase{
 		
 		hp.clickXBtn.click();
 		
-		extentLogger.pass("88");
+		extentLogger.pass("Verified close button on warning message");
 	}
 
 }
