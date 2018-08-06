@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,35 +14,25 @@ import gov.usd.pages.HomePage;
 import gov.usd.pages.ProfilesStatePage;
 
 import gov.usd.utilities.BrowserUtils;
-import gov.usd.utilities.Driver;
 
 public class SPA_575_TC extends TestBase {
 
-	Actions action = new Actions(Driver.getDriver());
+	@Test(priority = 21, description = "Check Percent of Total on the States Page sorting order")
+	public void percentOfTotalSortingTest() {
 
-	HomePage hp = new HomePage();
+		extentLogger = report.createTest("Check Percent of Total on the States Page sorting order");
 
-	ProfilesStatePage psp = new ProfilesStatePage();
+		HomePage hp = new HomePage();
 
-	@Test(priority = 1, description = "Home page Title verification")
-	public void verifyHomePageTitle() {
+		ProfilesStatePage psp = new ProfilesStatePage();
 
 		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
 
-	}
-
-	@Test(priority = 2, description = "Check Profile State option")
-
-	public void stateUrl() {
-
+		extentLogger.pass("Verified title of the home page");
 
 		Assert.assertTrue(hp.goToProfileToStateVerifyUrl());
-
-
-	}
-
-	@Test(priority = 3, description = "Check after click on arrow button up ascending order")
-	public void ascendingOrder() {
+		
+		extentLogger.pass("Verified url of the States page");
 
 		BrowserUtils.waitFor(1); // wait 1 sec before click
 
@@ -61,17 +50,14 @@ public class SPA_575_TC extends TestBase {
 		Collections.sort(sortedResultOfPercent);// sorted list
 
 		assertEquals(actualResultOfPercent, sortedResultOfPercent, "verify ascending order");
-
-	}
-
-	@Test(priority = 4, description = "Check after click on arrow button down descending order")
-	public void desendingOrder() {
+		
+		extentLogger.pass("Verified Percent of Total ascending order");
 
 		psp.arrowPercentOfTotalDown.click();
 
-		List<String> actualResultOfPercent = new ArrayList<>();
+		List<String> actualResultOfPercent1 = new ArrayList<>();
 
-		psp.percentOfTotalAllColumnInfo.stream().forEach(y -> actualResultOfPercent.add(y.getText()));
+		psp.percentOfTotalAllColumnInfo.stream().forEach(y -> actualResultOfPercent1.add(y.getText()));
 
 		List<String> decendingResultOfPercent = new ArrayList<>();
 
@@ -81,8 +67,9 @@ public class SPA_575_TC extends TestBase {
 
 		Collections.reverse(decendingResultOfPercent);
 
-		assertEquals(actualResultOfPercent, decendingResultOfPercent);
-
+		assertEquals(actualResultOfPercent1, decendingResultOfPercent);
+		
+		extentLogger.pass("Verified Percent of Total descending order");
 
 	}
 

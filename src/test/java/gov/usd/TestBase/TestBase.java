@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -16,8 +15,6 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-import gov.usd.pages.HomePage;
-import gov.usd.pages.SpendingExplorerPage;
 import gov.usd.utilities.BrowserUtils;
 import gov.usd.utilities.ConfigurationReader;
 import gov.usd.utilities.Driver;
@@ -62,7 +59,7 @@ public abstract class TestBase {
 
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
-		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
 		driver.manage().window().fullscreen();
 		

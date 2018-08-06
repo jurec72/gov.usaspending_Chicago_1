@@ -1,6 +1,5 @@
 package gov.usd.tests;
 
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,7 +8,6 @@ import gov.usd.pages.FederalAccountsPage;
 import gov.usd.pages.HomePage;
 import gov.usd.pages.ProfilesStatePage;
 import gov.usd.utilities.BrowserUtils;
-import gov.usd.utilities.ConfigurationReader;
 
 public class SPA_572_TC extends TestBase {
 

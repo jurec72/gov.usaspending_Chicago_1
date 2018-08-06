@@ -11,30 +11,24 @@ import gov.usd.utilities.BrowserUtils;
 
 public class SPA_576_TC extends TestBase {
 
-	BrowserUtils br = new BrowserUtils();
+	@Test(priority = 22, description = "Check number of results Awarded amount on States page")
+	public void awardedAmountResultTest() {
 
-	HomePage hp = new HomePage();
+		extentLogger = report.createTest("Check number of results Awarded amount on States page");
 
-	ProfilesStatePage psp = new ProfilesStatePage();
+		HomePage hp = new HomePage();
 
-	@Test(priority = 1, description = "Home page Title verification")
-	public void verifyHomePageTitle() {
+		ProfilesStatePage psp = new ProfilesStatePage();
 
 		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
-	}
 
-	@Test(priority = 2, description = "Check Profile State option")
+		extentLogger.pass("Verified title of the home page");
 
-	public void stateUrl() {
-		
 		BrowserUtils.waitFor(1);
-		
+
 		Assert.assertTrue(hp.goToProfileToStateVerifyUrl());
-
-	}
-
-	@Test(priority = 3, description = "Check number of results")
-	public void numberOfResults() {
+		
+		extentLogger.pass("Verified url of the States page");
 
 		BrowserUtils.waitFor(1);
 
@@ -43,6 +37,8 @@ public class SPA_576_TC extends TestBase {
 		String resultCounted = String.valueOf(psp.statesAwardedAmount.size());
 
 		Assert.assertEquals(resultLeftCorner, resultCounted);
+		
+		extentLogger.pass("Verified count of the Awarded amount page");
 
 	}
 

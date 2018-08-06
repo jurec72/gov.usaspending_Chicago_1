@@ -5,7 +5,6 @@ import static org.testng.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
@@ -23,7 +22,7 @@ public class SPA_541_TC extends TestBase {
 
 	Actions action = new Actions(Driver.getDriver());
 
-	@Test(priority = 1, description = "Check search result on Agencies page")
+	@Test(priority = 12, description = "Check search result on Agencies page")
 	public void agenciesPageSearchTest() {
 
 		driver.get(ConfigurationReader.getProperty("urlUSA"));
