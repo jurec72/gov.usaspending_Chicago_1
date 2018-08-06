@@ -6,55 +6,35 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import gov.usd.TestBase.TestBase;
 import gov.usd.pages.FederalAccountsPage;
 import gov.usd.pages.HomePage;
-import gov.usd.pages.ProfilesStatePage;
 import gov.usd.utilities.BrowserUtils;
 import gov.usd.utilities.ConfigurationReader;
-import gov.usd.utilities.Driver;
 
 public class SPA_569_TC extends TestBase {
 
-	HomePage hp = new HomePage();
-
-	ProfilesStatePage psp = new ProfilesStatePage();
-
-	Actions action = new Actions(Driver.getDriver());
-
-	FederalAccountsPage fap = new FederalAccountsPage();
-
-	BrowserUtils br = new BrowserUtils();
-
-	@Test(priority = 1)
+	@Test(priority = 15, description = "Check account name sort order in Federal accounts")
 	public void verificationTitle() {
+		
+		extentLogger = report.createTest("Check account name sort order in Federal accounts");
+		
+		HomePage hp = new HomePage();
 
-		driver.get(ConfigurationReader.getProperty("urlUSA"));
+		Actions action = new Actions(driver);
 
-		String currentTitle = ConfigurationReader.getProperty("title");
+		FederalAccountsPage fap = new FederalAccountsPage();
 
-		String actualTitle = driver.getTitle();
-
-		Assert.assertEquals(currentTitle, actualTitle, "Veriffying current title");
-	}
-
-	@Test(priority = 2, description = "Hover over the PROFILE functionality to reach Federal Accounts")
-	public void profileFunctionality() {
+        Assert.assertTrue(hp.goHomePageAndVerifyTitle());
+		
+		extentLogger.pass("Verified title of the home page");
 
 		action.moveToElement(hp.profileMenu).build().perform();
 
-		// action.moveToElement(hp.federalAccounts).build().perform();
 		hp.federalAccountsSubMenu.click();
-
-	}
-
-	@Test(priority = 3, description = "Check url and title in order to verify right page")
-	public void titleAndUrlVerifing() {
 
 		String currentUrlForFederalAccountProfile = driver.getCurrentUrl();
 
@@ -62,17 +42,16 @@ public class SPA_569_TC extends TestBase {
 
 		Assert.assertEquals(currentUrlForFederalAccountProfile, acctualUrlForFederalAccountProfile);
 
-		String actualTitle = ConfigurationReader.getProperty("title");
+		extentLogger.pass("Verified title of the Federal Account Profile");
 
-		String currentTitle = driver.getTitle();
+		String actualTitle1 = ConfigurationReader.getProperty("title");
 
-		Assert.assertEquals(currentTitle, actualTitle);
+		String currentTitle1 = driver.getTitle();
 
-	}
+		Assert.assertEquals(currentTitle1, actualTitle1);
 
-	@Test(priority = 4, description = "Verify assending order")
-	public void ascendingOrder() throws InterruptedException {
-		
+		extentLogger.pass("Verified that title of the Federal Account Profile matches the Federal Account Profile");
+
 		BrowserUtils.waitFor(1);
 
 		fap.managingAccountName.click();
@@ -85,45 +64,39 @@ public class SPA_569_TC extends TestBase {
 
 		for (WebElement string : fap.accountNameRow) {
 
-			System.out.println(string.getText());
-
 			accountNameArrow.add(string.getText().substring(0, 1));
 
 			expectedNameArrow.add(string.getText().substring(0, 1));
-
 		}
 
-		Collections.sort(expectedNameArrow);
+			Collections.sort(expectedNameArrow);
 
-		Assert.assertEquals(accountNameArrow, expectedNameArrow);
+			Assert.assertEquals(accountNameArrow, expectedNameArrow);
+
+			extentLogger.pass("Verified ascending order of Accout Name page ");
+
+			BrowserUtils.waitFor(1);
+
+			fap.managingAccountName.click();
+
+			BrowserUtils.waitFor(1);
+
+			List<String> accountNameDown = new ArrayList<>();
+
+			List<String> expectedNameDown = new ArrayList<>(); // actual list
+
+			for (int i = 0; i < 10; i++) {
+
+				accountNameDown.add(fap.accountNameRow.get(i).getText().substring(0, 1));
+
+				expectedNameDown.add(fap.accountNameRow.get(i).getText().substring(0, 1));
+
+			}
+
+			Assert.assertEquals(accountNameDown, expectedNameDown);
+
+			extentLogger.pass("Verifed descending order");
+		}
 
 	}
 
-	@Test(priority = 5, description = "Verify descending order")
-	public void descendingOrder() {
-
-		BrowserUtils.waitFor(1);
-		
-		fap.managingAccountName.click();
-		
-		BrowserUtils.waitFor(1);
-		
-		List<String> accountNameDown = new ArrayList<>();
-		
-		List<String> expectedNameDown = new ArrayList<>(); // actual list
-
-		for (int i = 0; i < 10; i++) {
-			
-		
-			accountNameDown.add(fap.accountNameRow.get(i).getText().substring(0, 1));
-			
-			expectedNameDown.add(fap.accountNameRow.get(i).getText().substring(0, 1));
-
-		}
-
-//		Collections.reverse(expectedNameDown);
-
-		Assert.assertEquals(accountNameDown, expectedNameDown);
-	}
-
-}
