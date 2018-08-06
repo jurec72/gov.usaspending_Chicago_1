@@ -11,71 +11,49 @@ import org.testng.annotations.Test;
 import gov.usd.TestBase.TestBase;
 import gov.usd.pages.AgenciesPage;
 import gov.usd.pages.HomePage;
-import gov.usd.pages.ProfilesStatePage;
 import gov.usd.utilities.BrowserUtils;
-import gov.usd.utilities.ConfigurationReader;
 
 public class SPA_538_TC extends TestBase {
-	
-	BrowserUtils br = new BrowserUtils();
-	
-	AgenciesPage ap = new AgenciesPage();
-	
-	HomePage hp = new HomePage();
 
-	ProfilesStatePage psp = new ProfilesStatePage();
+	@Test(priority = 9, description = "Check Percent Of Total sorting order")
 
-	@Test(priority = 1, description = "Verifing current title")
+	public void agenciesPercentOfTotalSortTest() {
 
-	public void verificationTitle() {
+		extentLogger = report.createTest("Check POT Down Button Active");
 
-		driver.get(ConfigurationReader.getProperty("urlUSA"));
+		AgenciesPage ap = new AgenciesPage();
 
-		String currentTitle = ConfigurationReader.getProperty("title");
-
-		String actualTitle = driver.getTitle();
-
-		Assert.assertEquals(currentTitle, actualTitle, "Verifing current title");
-
-	}
-
-	@Test(priority = 2, description = "Profiles is clickble")
-
-	public void hoverOver() {
+		HomePage hp = new HomePage();
 
 		Actions action = new Actions(driver);
+
+		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
+
+		extentLogger.pass("Verified title of the Home page");
 
 		action.moveToElement(hp.profileMenu).perform();
 
 		Assert.assertTrue(hp.profilesAgenciesOption.isDisplayed());
 
+		extentLogger.pass("Verified Agencies submenu");
+
 		hp.profilesAgenciesOption.click();
 
-	}
-
-	@Test(priority = 3, description = "Verifing Percent Of Total ascending order")
-
-	public void agengiesAscendingOrder()  {
-		
 		BrowserUtils.waitFor(1);
 
 		ap.agenciesAscending.click();
 
-		List<Double> actuaAgenciesDescending = ap.convertingToDouble(ap.agenciesPercentOfTotalList);
+		List<Double> actuaAgenciesAscending = ap.convertingToDouble(ap.agenciesPercentOfTotalList);
 
-		List<Double> expectedAgenciesDescending = new ArrayList<>();
+		List<Double> expectedAgenciesAscending = new ArrayList<>();
 
-		expectedAgenciesDescending.addAll(actuaAgenciesDescending);
+		expectedAgenciesAscending.addAll(actuaAgenciesAscending);
 
-		Collections.sort(expectedAgenciesDescending);
+		Collections.sort(expectedAgenciesAscending);
 
-		Assert.assertEquals(expectedAgenciesDescending, actuaAgenciesDescending);
+		Assert.assertEquals(expectedAgenciesAscending, actuaAgenciesAscending);
 
-	}
-
-	@Test(priority = 4, description = "Verifing Percent Of Total descending order")
-
-	public void agenciesDescendingOrder() throws InterruptedException {
+		extentLogger.pass("Verified Agencies Percent of Total ascending order");
 
 		ap.agenciesAscending.click();
 
@@ -84,19 +62,37 @@ public class SPA_538_TC extends TestBase {
 		List<Double> expectedAgenciesDescending = new ArrayList<>();
 
 		expectedAgenciesDescending.addAll(actuaAgenciesDescending2);
-		
+
 		Collections.sort(expectedAgenciesDescending);
+
 		Collections.reverse(expectedAgenciesDescending);
 
 		Assert.assertEquals(expectedAgenciesDescending, actuaAgenciesDescending2);
-	
+
+		extentLogger.pass("Verified Agencies Percent of Total Descending order");
+
 	}
 
-	@Test(priority = 5, description = "Verifing Percent Of Total ascending order")
+	@Test(priority = 10, description = "Check Budgetary Resources sorting order")
 
-	public void agenciesBudgetaryResourcesAscending() {
+	public void agenciesBudgetaryResourcesSortTest() {
+
+		extentLogger = report.createTest("Check Budgetary Resources sorting order");
+
+		AgenciesPage ap = new AgenciesPage();
+
+		HomePage hp = new HomePage();
+
+		Actions action = new Actions(driver);
+
+		action.moveToElement(hp.profileMenu).perform();
+
+		hp.profilesAgenciesOption.click();
+
+		BrowserUtils.waitFor(1);
 
 		ap.agenciesBudgetaryResourcesClick.click();
+
 		ap.agenciesBudgetaryResourcesClick.click();
 
 		List<Double> actualBudgetaryResourcesAscending = ap.convertingToDouble(ap.agenciesBudgetaryResourcesList);
@@ -109,11 +105,7 @@ public class SPA_538_TC extends TestBase {
 
 		Assert.assertEquals(expectedBudgetaryResourcesAscending, actualBudgetaryResourcesAscending);
 
-	}
-
-	@Test(priority = 6, description = "Verifing Percent Of Total descending order")
-
-	public void agenciesBudgetaryResourcesDescending() {
+		extentLogger.pass("Verified Budgetary Resources Ascending order");
 
 		ap.agenciesBudgetaryResourcesClick.click();
 
@@ -124,15 +116,32 @@ public class SPA_538_TC extends TestBase {
 		expectedBudgetaryResourcesDescending.addAll(actualBudgetaryResourcesDescending);
 
 		Collections.sort(expectedBudgetaryResourcesDescending);
+
 		Collections.reverse(expectedBudgetaryResourcesDescending);
 
 		Assert.assertEquals(expectedBudgetaryResourcesDescending, actualBudgetaryResourcesDescending);
 
+		extentLogger.pass("Verified Budgetary Resources Descending order");
+
 	}
 
-	@Test(priority = 7, description = "Verifing Agency Name ascending order")
+	@Test(priority = 11, description = "Check Agency Name sorting order")
 
-	public void agenciesAgencyNameAscending() {
+	public void agenciesAgencyNameSortTest() {
+
+		extentLogger = report.createTest("Check Agency Name sorting order");
+
+		AgenciesPage ap = new AgenciesPage();
+
+		HomePage hp = new HomePage();
+
+		Actions action = new Actions(driver);
+
+		action.moveToElement(hp.profileMenu).perform();
+
+		hp.profilesAgenciesOption.click();
+
+		BrowserUtils.waitFor(1);
 
 		ap.agenciesAgencyNameClick.click();
 
@@ -146,11 +155,7 @@ public class SPA_538_TC extends TestBase {
 
 		Assert.assertEquals(expectedAgencyNameAscending, actualAgencyNameAscending);
 
-	}
-
-	@Test(priority = 8, description = "Verifing agencies descending order")
-
-	public void agenciesAgencyNameDescending() {
+		extentLogger.pass("Verified Agency Name Ascending order");
 
 		ap.agenciesAgencyNameClick.click();
 
@@ -161,11 +166,13 @@ public class SPA_538_TC extends TestBase {
 		expectedAgencyNameDescending.addAll(actualAgencyNameDescending);
 
 		Collections.sort(expectedAgencyNameDescending);
+
 		Collections.reverse(expectedAgencyNameDescending);
 
 		Assert.assertEquals(expectedAgencyNameDescending, actualAgencyNameDescending);
 
-	
+		extentLogger.pass("Verified Agency Name Descending order");
+
 	}
 
 }
