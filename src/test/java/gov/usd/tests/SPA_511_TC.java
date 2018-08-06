@@ -22,25 +22,36 @@ public class SPA_511_TC extends TestBase {
 
 	@Test(priority = 1, description = "Launching to the home page")
 	public void titleVerification() {
+		
+		extentLogger = report.createTest("9");
 
 		Assert.assertTrue(hp.goHomePageAndVerifyTitle());
+		
+		extentLogger.pass("99");
 		
 	}
 
 	@Test(priority = 2, description = "Verifying the explorer page")
 	public void explorerTitleVerification() {
 
+		
+		extentLogger = report.createTest("10");
+		
 		String actualTitle = ConfigurationReader.getProperty("title");
 
 		String currentTitle = driver.getTitle();
 
 		Assert.assertEquals(currentTitle, actualTitle);
+		
+		extentLogger.pass("1010");
 
 
 	}
 
 	@Test(priority = 3, description = "Hover over the Award Search functionality to reach submenu")
 	public void awardMenuDisplayed() {
+		
+		extentLogger = report.createTest("11");
 		
 		BrowserUtils.waitFor(1);
 
@@ -49,12 +60,16 @@ public class SPA_511_TC extends TestBase {
 		Assert.assertTrue(sep.adnvacedSearch.isDisplayed());
 		
 		Assert.assertTrue(sep.keywordSearch.isDisplayed());
+		
+		extentLogger.pass("1111");
 
 
 	}
 	
 	@Test(priority = 4, description = "Hover over the Profiles functionality to reach submenu")
 	public void profilesMenuDisplayed() {
+		
+		extentLogger = report.createTest("12");
 		
 		BrowserUtils.waitFor(1);
 
@@ -67,11 +82,15 @@ public class SPA_511_TC extends TestBase {
 		Assert.assertTrue(sep.states.isDisplayed());
 		
 		Assert.assertTrue(sep.recipients.isDisplayed());
+		
+		extentLogger.pass("1212");
 
 	}
 	
 	@Test(priority = 5, description = "Hover over the Download Center functionality to reach submenu")
 	public void downloadCenterMenuDisplayed() {
+		
+		extentLogger = report.createTest("13");
 		
 		BrowserUtils.waitFor(1);
 
@@ -86,11 +105,15 @@ public class SPA_511_TC extends TestBase {
 		Assert.assertTrue(sep.databaseDownload.isDisplayed());
 		
 		Assert.assertTrue(sep.api.isDisplayed());
+		
+		extentLogger.pass("1313");
 
 	}
 	
 	@Test(priority = 6, description = "Hover over the Glossary functionality to reach submenu")
 	public void glossaryMenuDisplayed() {
+		
+		extentLogger = report.createTest("14");
 		
 		BrowserUtils.waitFor(1);
 
@@ -99,6 +122,8 @@ public class SPA_511_TC extends TestBase {
 		BrowserUtils.waitFor(1);
 
 		Assert.assertTrue(sep.glossaryTitle.isDisplayed());
+		
+		extentLogger.pass("1414");
 
 	}
 }
